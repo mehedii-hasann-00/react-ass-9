@@ -1,12 +1,19 @@
 import { NavLink, Link } from 'react-router-dom';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../firebase/firebase.init';
 const googleProvider = new GoogleAuthProvider();
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 export default function Header() {
     const [user, setUser] = useState(null);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return () => unsubscribe();
+    }, []);
 
     const handleGoogleBtn = () => {
         signInWithPopup(auth, googleProvider)
@@ -77,9 +84,9 @@ export default function Header() {
 
                         {/* Dropdown */}
                         {menuOpen && (
-                            <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-100">
-                                <div className="px-4 py-2 border-b border-gray-200 text-gray-700 font-medium">
-                                    {user.displayName}
+                            <div className="absolute z-10 right-0 mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-100">
+                                <div className="flex px-4 py-2 border-b border-gray-200 text-gray-700 font-medium">
+                                    <span><img src={user.photoURL} alt="" className='h-8 w-8 rounded-full mr-4'/></span>{user.displayName}
                                 </div>
                                 <button
                                     onClick={sign_out}

@@ -1,147 +1,113 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { auth } from "../firebase/firebase.init";
+import { updateProfile, onAuthStateChanged } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function MyProfile() {
-  const [installed, setInstalled] = useState([]);
-  const [sortOrder, setSortOrder] = useState("none");
+  const [user, setUser] = useState(null);
+  const [newName, setNewName] = useState("");
+  const [newPhoto, setNewPhoto] = useState("");
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("installedApps") || "[]");
-    setInstalled(data);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (currentUser) {
+        setNewName(currentUser.displayName || "");
+        setNewPhoto(currentUser.photoURL || "");
+      }
+    });
+    return () => unsubscribe();
   }, []);
 
-  const notify = (msg) => toast.success(msg);
+  // 🔹 Handle profile update
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    if (!user) return;
 
-  const handleUninstall = (id) => {
-    const filtered = installed.filter((app) => app.id !== id);
-    setInstalled(filtered);
-    localStorage.setItem("installedApps", JSON.stringify(filtered));
-    notify("Deleted successfully! 🎉");
-  };
-
-  const handleSort = (order) => {
-    setSortOrder(order);
-    let sorted = [...installed];
-
-    const parseDownloads = (downloads) => {
-      const num = parseFloat(downloads);
-      if (downloads.includes("B")) return num * 1_000_000_000;
-      if (downloads.includes("M")) return num * 1_000_000;
-      if (downloads.includes("K")) return num * 1_000;
-      return num;
-    };
-
-    if (order === "high-low") {
-      sorted.sort((a, b) => parseDownloads(b.downloads) - parseDownloads(a.downloads));
-    } else if (order === "low-high") {
-      sorted.sort((a, b) => parseDownloads(a.downloads) - parseDownloads(b.downloads));
+    try {
+      await updateProfile(auth.currentUser, {
+        displayName: newName,
+        photoURL: newPhoto,
+      });
+      toast.success("Profile updated successfully!");
+      setUser({ ...auth.currentUser });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to update profile.");
     }
-
-    setInstalled(sorted);
   };
+
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <p className="text-gray-600 text-lg">Please log in to view your profile.</p>
+      </div>
+    );
+  }
 
   return (
-    <>
+    <section className="min-h-screen bg-gray-50 py-16 px-6">
       <ToastContainer />
-      <div className="min-h-screen bg-gray-50">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-xl mx-auto bg-white rounded-xl shadow-lg p-8 text-center border border-gray-100">
+        <h2 className="text-2xl font-semibold text-green-700 mb-6">My Profile 
+        </h2>
 
-          <header className="text-center">
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-              Your Installed Apps
-            </h1>
-            <p className="mt-2 text-slate-500">
-              Explore All Trending Apps on the Market developed by us
-            </p>
-          </header>
-          <div className="mt-10 flex items-center justify-between">
-            <p className="text-xl font-semibold text-slate-800">
-              <span className="font-bold">{installed.length}</span> Apps Found
-            </p>
-
-            <div className="relative">
-              <select
-                value={sortOrder}
-                onChange={(e) => handleSort(e.target.value)}
-                className="appearance-none rounded-md border border-slate-200 bg-white px-3 py-2 pr-8 text-sm text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
-              >
-                <option value="none">Sort By Downloads</option>
-                <option value="high-low">High–Low</option>
-                <option value="low-high">Low–High</option>
-              </select>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="absolute right-2 top-3 h-4 w-4 text-slate-400 pointer-events-none"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M7 10l5 5 5-5H7z" />
-              </svg>
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-5">
-            {installed.length === 0 ? (
-              <p className="text-slate-500">No apps installed yet.</p>
-            ) : (
-              installed.map((app) => (
-                <div
-                  key={app.id}
-                  className="flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 sm:px-6 py-4 shadow-sm"
-                >
-                  <div className="flex items-center gap-4 sm:gap-6">
-                    <div className="h-16 w-16 rounded-lg bg-slate-200 overflow-hidden flex items-center justify-center">
-                      <img
-                        src={app.image}
-                        alt={app.title}
-                        className="h-12 w-12 object-contain"
-                      />
-                    </div>
-
-                    <div>
-                      <Link
-                        to={`/apps/${app.id}`}
-                        className="block text-base sm:text-lg font-semibold text-slate-900 hover:underline"
-                      >
-                        {app.title}
-                      </Link>
-
-                      <div className="mt-2 flex items-center gap-5 text-sm">
-                        <span className="inline-flex items-center gap-1.5 text-emerald-600">
-                          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-                            <path d="M12 3a1 1 0 0 1 1 1v8.6l2.3-2.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 1 1 1.4-1.4L11 12.6V4a1 1 0 0 1 1-1Zm-7 14a1 1 0 0 1 1-1h12a1 1 0 1 1 0 2H6a1 1 0 0 1-1-1Z" />
-                          </svg>
-                          {app.downloads}
-                        </span>
-
-                        <span className="inline-flex items-center gap-1.5 text-amber-600 font-medium">
-                          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
-                            <path d="m12 17.27 6.18 3.73-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
-                          </svg>
-                          {app.ratingAvg}
-                        </span>
-
-                        <span className="text-slate-500">{app.size} MB</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex-shrink-0">
-                    <button
-                      onClick={() => handleUninstall(app.id)}
-                      className="rounded-md bg-emerald-500 px-4 py-2 text-white text-sm font-semibold shadow hover:bg-emerald-600"
-                    >
-                      Uninstall
-                    </button>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+        <div className="flex justify-center mb-6">
+          <img
+            src={user.photoURL || "/default-avatar.png"}
+            alt="User"
+            className="h-24 w-24 rounded-full object-cover border-4 border-green-600 shadow-md"
+          />
         </div>
+
+        <div className="space-y-2 mb-8">
+          <p className="text-lg font-medium text-gray-800">
+            <span className="text-gray-500">Name: </span> {user.displayName || "Not set"}
+          </p>
+          <p className="text-lg font-medium text-gray-800">
+            <span className="text-gray-500">Email: </span> {user.email}
+          </p>
+        </div>
+
+        <form
+          onSubmit={handleUpdateProfile}
+          className="flex flex-col gap-4 text-left"
+        >
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              New Display Name
+            </label>
+            <input
+              type="text"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              placeholder="Enter new name"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-green-600 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              New Photo URL
+            </label>
+            <input
+              type="text"
+              value={newPhoto}
+              onChange={(e) => setNewPhoto(e.target.value)}
+              placeholder="Enter image URL"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-green-600 outline-none"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-green-700 to-green-500 text-white py-3 rounded-md font-medium hover:from-green-600 hover:to-green-400 transition-all duration-300"
+          >
+            Update Profile
+          </button>
+        </form>
       </div>
-    </>
+    </section>
   );
 }

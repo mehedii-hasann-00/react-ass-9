@@ -16,7 +16,7 @@ const topRated = plants
 
     return (
         <>
-            <section className="relative bg-[#f8f7f3] overflow-hidden">
+            <section className="relative bg-[#f8f7f3] overflow-hidden py-8">
                 <div className="grid md:grid-cols-2 items-center min-h-[80vh] px-8 md:px-16">
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
