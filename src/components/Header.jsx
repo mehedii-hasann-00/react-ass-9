@@ -5,7 +5,7 @@ export default function Header() {
         <div className="px-8 mx-4 py-8 flex flex-col lg:flex-row items-center justify-between">
             <div className='flex' >
                 <Link to="/" className="flex items-center">
-                    <i class="lni lni-leaf-1"></i>
+                    <img src="./lg.png" alt="" className='h-16 w-16'/>
                     <p className="text-xl font-bold ml-2 text-green-700">GreenNest</p>
                 </Link>
             </div>
