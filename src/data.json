@@ -1,272 +1,98 @@
 [
   {
-    "id": 1,
-    "image": "https://img.icons8.com/color/256/facebook-new.png",
-    "title": "Facebook",
-    "companyName": "Meta Platforms, Inc.",
-    "description": "Connect with friends, share updates, photos, and videos instantly.",
-    "size": 150,
-    "reviews": 9500000,
-    "ratingAvg": 4.2,
-    "downloads": "5B+",
-    "ratings": [
-      { "name": "1 star", "count": 250000 },
-      { "name": "2 star", "count": 450000 },
-      { "name": "3 star", "count": 850000 },
-      { "name": "4 star", "count": 1800000 },
-      { "name": "5 star", "count": 6150000 }
-    ]
+    "plantId": 1,
+    "plantName": "Snake Plant",
+    "category": "Air Purifier",
+    "price": 18,
+    "rating": 4.8,
+    "availableStock": 10,
+    "careLevel": "Easy",
+    "description": "A hardy plant that purifies indoor air and thrives in low light. Perfect for beginners and busy individuals.",
+    "image": "./snake.jpeg",
+    "providerName": "UrbanGreen Studio"
   },
   {
-    "id": 2,
-    "image": "https://img.icons8.com/color/256/youtube-play.png",
-    "title": "YouTube",
-    "companyName": "Google LLC",
-    "description": "Watch, upload, and share videos with the world’s largest video community.",
-    "size": 120,
-    "reviews": 15000000,
-    "ratingAvg": 4.5,
-    "downloads": "10B+",
-    "ratings": [
-      { "name": "1 star", "count": 400000 },
-      { "name": "2 star", "count": 650000 },
-      { "name": "3 star", "count": 950000 },
-      { "name": "4 star", "count": 2500000 },
-      { "name": "5 star", "count": 11000000 }
-    ]
+    "plantId": 2,
+    "plantName": "Peace Lily",
+    "category": "Flowering",
+    "price": 22,
+    "rating": 4.6,
+    "availableStock": 8,
+    "careLevel": "Medium",
+    "description": "Elegant white blooms that add charm to any space. Prefers shade and regular watering.",
+    "image": "./peace.jpeg",
+    "providerName": "Bloom & Breathe"
   },
   {
-    "id": 3,
-    "image": "https://img.icons8.com/fluency/256/instagram-new.png",
-    "title": "Instagram",
-    "companyName": "Meta Platforms, Inc.",
-    "description": "Capture and share your moments, stories, and reels with followers worldwide.",
-    "size": 180,
-    "reviews": 8200000,
-    "ratingAvg": 4.4,
-    "downloads": "5B+",
-    "ratings": [
-      { "name": "1 star", "count": 300000 },
-      { "name": "2 star", "count": 500000 },
-      { "name": "3 star", "count": 800000 },
-      { "name": "4 star", "count": 1600000 },
-      { "name": "5 star", "count": 5000000 }
-    ]
+    "plantId": 3,
+    "plantName": "Spider Plant",
+    "category": "Air Purifier",
+    "price": 15,
+    "rating": 4.7,
+    "availableStock": 12,
+    "careLevel": "Easy",
+    "description": "A classic indoor favorite that helps remove toxins from the air and produces baby shoots easily.",
+    "image": "./spider.jpeg",
+    "providerName": "NatureNook"
   },
   {
-    "id": 4,
-    "image": "https://img.icons8.com/color/256/whatsapp.png",
-    "title": "WhatsApp Messenger",
-    "companyName": "Meta Platforms, Inc.",
-    "description": "Fast, secure messaging and calling for free, available globally.",
-    "size": 90,
-    "reviews": 7200000,
-    "ratingAvg": 4.5,
-    "downloads": "5B+",
-    "ratings": [
-      { "name": "1 star", "count": 200000 },
-      { "name": "2 star", "count": 350000 },
-      { "name": "3 star", "count": 700000 },
-      { "name": "4 star", "count": 1500000 },
-      { "name": "5 star", "count": 4450000 }
-    ]
+    "plantId": 4,
+    "plantName": "Fiddle Leaf Fig",
+    "category": "Decorative",
+    "price": 35,
+    "rating": 4.5,
+    "availableStock": 6,
+    "careLevel": "Hard",
+    "description": "Stylish and large-leaved, this plant makes a bold decor statement. Requires bright, indirect sunlight.",
+    "image": "./fiddle.jpeg",
+    "providerName": "Leaf & Loft"
   },
   {
-    "id": 5,
-    "image": "https://img.icons8.com/color/256/tiktok--v1.png",
-    "title": "TikTok",
-    "companyName": "ByteDance Ltd.",
-    "description": "Create and discover short videos with trending music and effects.",
-    "size": 210,
-    "reviews": 6800000,
-    "ratingAvg": 4.3,
-    "downloads": "3B+",
-    "ratings": [
-      { "name": "1 star", "count": 250000 },
-      { "name": "2 star", "count": 400000 },
-      { "name": "3 star", "count": 750000 },
-      { "name": "4 star", "count": 1300000 },
-      { "name": "5 star", "count": 4100000 }
-    ]
+    "plantId": 5,
+    "plantName": "ZZ Plant",
+    "category": "Low Maintenance",
+    "price": 25,
+    "rating": 4.9,
+    "availableStock": 9,
+    "careLevel": "Easy",
+    "description": "Tolerates neglect and low light. Shiny dark green leaves make it ideal for offices and apartments.",
+    "image": "./zz.jpeg",
+    "providerName": "EverGreen Co."
   },
   {
-    "id": 6,
-    "image": "https://img.icons8.com/color/256/snapchat.png",
-    "title": "Snapchat",
-    "companyName": "Snap Inc.",
-    "description": "Share quick photos, videos, and messages that disappear after viewing.",
-    "size": 115,
-    "reviews": 5400000,
-    "ratingAvg": 4.1,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 180000 },
-      { "name": "2 star", "count": 320000 },
-      { "name": "3 star", "count": 600000 },
-      { "name": "4 star", "count": 1100000 },
-      { "name": "5 star", "count": 3200000 }
-    ]
+    "plantId": 6,
+    "plantName": "Aloe Vera",
+    "category": "Medicinal",
+    "price": 20,
+    "rating": 4.8,
+    "availableStock": 14,
+    "careLevel": "Easy",
+    "description": "Known for its healing gel, Aloe Vera is both functional and decorative. Loves sunlight and minimal water.",
+    "image": "./aloe.jpeg",
+    "providerName": "UrbanBloom Market"
   },
   {
-    "id": 7,
-    "image": "https://img.icons8.com/color/256/spotify--v1.png",
-    "title": "Spotify",
-    "companyName": "Spotify AB",
-    "description": "Stream millions of songs, podcasts, and playlists ad-free or with ads.",
-    "size": 130,
-    "reviews": 9500000,
-    "ratingAvg": 4.7,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 150000 },
-      { "name": "2 star", "count": 220000 },
-      { "name": "3 star", "count": 400000 },
-      { "name": "4 star", "count": 1500000 },
-      { "name": "5 star", "count": 7300000 }
-    ]
+    "plantId": 7,
+    "plantName": "Monstera Deliciosa",
+    "category": "Tropical",
+    "price": 45,
+    "rating": 4.9,
+    "availableStock": 5,
+    "careLevel": "Medium",
+    "description": "Famous for its unique split leaves and tropical vibes. Thrives in bright, indirect light and loves humidity.",
+    "image": "./monster.jpeg",
+    "providerName": "GreenVista Interiors"
   },
   {
-    "id": 8,
-    "image": "https://img.icons8.com/color/256/netflix-desktop-app.png",
-    "title": "Netflix",
-    "companyName": "Netflix, Inc.",
-    "description": "Watch movies, TV shows, and exclusive Netflix originals anytime.",
-    "size": 250,
-    "reviews": 6000000,
-    "ratingAvg": 4.5,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 210000 },
-      { "name": "2 star", "count": 340000 },
-      { "name": "3 star", "count": 600000 },
-      { "name": "4 star", "count": 1300000 },
-      { "name": "5 star", "count": 3550000 }
-    ]
-  },
-  {
-    "id": 9,
-    "image": "https://img.icons8.com/color/256/twitter--v1.png",
-    "title": "Twitter (X)",
-    "companyName": "X Corp.",
-    "description": "Join conversations, follow trends, and share your voice globally.",
-    "size": 160,
-    "reviews": 4300000,
-    "ratingAvg": 4.0,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 300000 },
-      { "name": "2 star", "count": 400000 },
-      { "name": "3 star", "count": 700000 },
-      { "name": "4 star", "count": 900000 },
-      { "name": "5 star", "count": 2000000 }
-    ]
-  },
-  {
-    "id": 10,
-    "image": "https://img.icons8.com/color/256/linkedin.png",
-    "title": "LinkedIn",
-    "companyName": "Microsoft Corporation",
-    "description": "Build professional connections, apply for jobs, and grow your career.",
-    "size": 95,
-    "reviews": 2500000,
-    "ratingAvg": 4.3,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 100000 },
-      { "name": "2 star", "count": 180000 },
-      { "name": "3 star", "count": 300000 },
-      { "name": "4 star", "count": 700000 },
-      { "name": "5 star", "count": 1220000 }
-    ]
-  },
-  {
-    "id": 11,
-    "image": "https://img.icons8.com/color/256/telegram-app.png",
-    "title": "Telegram",
-    "companyName": "Telegram FZ-LLC",
-    "description": "Secure and fast messaging with cloud sync, media sharing, and large groups.",
-    "size": 110,
-    "reviews": 3200000,
-    "ratingAvg": 4.6,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 100000 },
-      { "name": "2 star", "count": 160000 },
-      { "name": "3 star", "count": 250000 },
-      { "name": "4 star", "count": 800000 },
-      { "name": "5 star", "count": 1890000 }
-    ]
-  },
-  {
-    "id": 12,
-    "image": "https://img.icons8.com/color/256/pinterest--v1.png",
-    "title": "Pinterest",
-    "companyName": "Pinterest, Inc.",
-    "description": "Discover creative ideas, recipes, fashion, and inspiration worldwide.",
-    "size": 140,
-    "reviews": 2100000,
-    "ratingAvg": 4.5,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 80000 },
-      { "name": "2 star", "count": 120000 },
-      { "name": "3 star", "count": 240000 },
-      { "name": "4 star", "count": 600000 },
-      { "name": "5 star", "count": 1060000 }
-    ]
-  },
-  {
-    "id": 13,
-    "image": "https://img.icons8.com/color/256/gmail-new.png",
-    "title": "Gmail",
-    "companyName": "Google LLC",
-    "description": "Organize emails, block spam, and access your inbox anytime anywhere.",
-    "size": 80,
-    "reviews": 4000000,
-    "ratingAvg": 4.5,
-    "downloads": "10B+",
-    "ratings": [
-      { "name": "1 star", "count": 200000 },
-      { "name": "2 star", "count": 300000 },
-      { "name": "3 star", "count": 600000 },
-      { "name": "4 star", "count": 1200000 },
-      { "name": "5 star", "count": 2700000 }
-    ]
-  },
-  {
-    "id": 14,
-    "image": "https://img.icons8.com/color/256/zoom.png",
-    "title": "Zoom",
-    "companyName": "Zoom Video Communications",
-    "description": "Video meetings, chat, and collaboration made simple for work or study.",
-    "size": 190,
-    "reviews": 2700000,
-    "ratingAvg": 4.4,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 100000 },
-      { "name": "2 star", "count": 180000 },
-      { "name": "3 star", "count": 300000 },
-      { "name": "4 star", "count": 700000 },
-      { "name": "5 star", "count": 1420000 }
-    ]
-  },
-  {
-    "id": 15,
-    "image": "https://img.icons8.com/color/256/google-play-music.png",
-    "title": "Spotify Music",
-    "companyName": "Spotify AB",
-    "description": "Listen to millions of songs, create playlists, and share music with friends.",
-    "size": 120,
-    "reviews": 7500000,
-    "ratingAvg": 4.7,
-    "downloads": "1B+",
-    "ratings": [
-      { "name": "1 star", "count": 150000 },
-      { "name": "2 star", "count": 220000 },
-      { "name": "3 star", "count": 400000 },
-      { "name": "4 star", "count": 1500000 },
-      { "name": "5 star", "count": 5330000 }
-    ]
+    "plantId": 8,
+    "plantName": "Rubber Plant",
+    "category": "Decorative",
+    "price": 40,
+    "rating": 4.7,
+    "availableStock": 7,
+    "careLevel": "Medium",
+    "description": "Glossy, deep-green leaves make this plant a modern decor essential. Prefers bright light and moderate watering.",
+    "image": "./rubber.jpeg",
+    "providerName": "Leafy Haven Co."
   }
 ]

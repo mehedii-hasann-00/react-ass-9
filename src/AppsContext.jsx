@@ -1,18 +1,18 @@
 // src/context/AppsContext.jsx
 import { createContext, useState, useEffect } from "react";
-import appsData from "./data.json";
+import plantsData from "./data.json";
 
 export const AppsContext = createContext();
 
 export function AppsProvider({ children }) {
-  const [apps, setApps] = useState([]);
+  const [plants, setPlantsData] = useState([]);
 
   useEffect(() => {
-    setApps(appsData);
+    setPlantsData(plantsData);
   }, []);
 
   return (
-    <AppsContext.Provider value={{ apps }}>
+    <AppsContext.Provider value={{ plants }}>
       {children}
     </AppsContext.Provider>
   );
