@@ -1,16 +1,17 @@
-# React + Vite
+# 🧩 AppHub – React Application Directory
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 📖 Description
+AppHub is a React-based application marketplace UI built with Tailwind CSS and Recharts.  
+It allows users to explore, install, and manage apps locally using `localStorage`, with detailed app pages, charts, and smooth navigation.
 
-Currently, two official plugins are available:
+### ⚙️ Technologies Used
+- **React 18** – Frontend library for building UI  
+- **React Router DOM** – Client-side routing  
+- **Tailwind CSS** – Utility-first styling  
+- **Recharts** – Data visualization for ratings  
+- **React Toastify** – Notifications  
+- **Vite** – Lightning-fast development environment  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🧠 *Includes local installation tracking, sorting, loading animations, and detailed app visualization.*

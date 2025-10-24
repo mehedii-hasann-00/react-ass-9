@@ -1,5 +1,5 @@
 {
-  "name": "ass-9",
+  "name": "ass-8",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router": "^7.9.4",
+    "react-router-dom": "^7.9.4",
+    "react-toastify": "^11.0.5",
+    "recharts": "^3.2.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
