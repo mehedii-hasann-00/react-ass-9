@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AppsContext } from "../AppsContext";
 import { motion } from "framer-motion";
 import CareTips from "./CareTips";
+import PlantOfTheWeek from "./PlantOfTheWeek";
 
 export default function Home() {
     const [totalShow, setTotalShow] = useState(8);
@@ -89,6 +90,7 @@ const topRated = plants
             </section>
 
             <CareTips/>
+            <PlantOfTheWeek/>
 
             <section className="py-16 px-8 bg-white">
                 <h2 className="text-3xl font-semibold text-center text-green-800 mb-10">

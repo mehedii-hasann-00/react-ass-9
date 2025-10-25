@@ -28,7 +28,7 @@ function Plants() {
 
         <div class="mt-8 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p class="text-slate-600 font-medium">
-            <span class="font-semibold">({searchedApp.length > 0 ? searchedApp.length : searchText.length === 0 ? plants.length : 0})</span> Apps Found
+            <span class="font-semibold">({searchedApp.length > 0 ? searchedApp.length : searchText.length === 0 ? plants.length : 0})</span> Plants Found
           </p>
 
           <label class="relative block">
