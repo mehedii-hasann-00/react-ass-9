@@ -1,11 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { auth } from "../firebase/firebase.init";
-import { updateProfile, onAuthStateChanged } from "firebase/auth";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AppsContext } from "../AppsContext";
+import {
+  onAuthStateChanged,
+  updateProfile,
+} from "firebase/auth";
+
 
 export default function MyProfile() {
-  const [user, setUser] = useState(null);
+    const { user, setUser } = useContext(AppsContext);
+  
   const [newName, setNewName] = useState("");
   const [newPhoto, setNewPhoto] = useState("");
 

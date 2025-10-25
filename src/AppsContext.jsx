@@ -86,6 +86,7 @@ export function AppsProvider({ children }) {
       value={{
         plants,
         user,
+        setUser,
         loadingAuth,
         createUser,     // signup
         loginUser,      // email login
