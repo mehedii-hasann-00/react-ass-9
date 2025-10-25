@@ -8,7 +8,6 @@ export default function Home() {
     const [totalShow, setTotalShow] = useState(8);
     const { plants } = useContext(AppsContext);
 
-    // Filter top-rated plants
 const topRated = plants
   ? [...plants].sort((a, b) => b.rating - a.rating).slice(0, 4)
   : [];
@@ -89,48 +88,11 @@ const topRated = plants
                 </div>
             </section>
 
-            {/* <section className="py-16 px-8 bg-[#f8f7f3]">
-                <h2 className="text-3xl font-semibold text-center text-green-800 mb-10">
-                    🌱 Plant Care Tips
-                </h2>
-
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-                    <div className="p-6 bg-white rounded-lg shadow-sm border">
-                        <h3 className="text-xl font-semibold text-green-700 mb-3">
-                            💧 Watering
-                        </h3>
-                        <p className="text-gray-600">
-                            Most indoor plants prefer moist soil. Water when the top inch feels
-                            dry, but avoid overwatering.
-                        </p>
-                    </div>
-
-                    <div className="p-6 bg-white rounded-lg shadow-sm border">
-                        <h3 className="text-xl font-semibold text-green-700 mb-3">
-                            ☀️ Sunlight
-                        </h3>
-                        <p className="text-gray-600">
-                            Place your plants near bright, indirect light. Too much direct
-                            sun can burn the leaves.
-                        </p>
-                    </div>
-
-                    <div className="p-6 bg-white rounded-lg shadow-sm border">
-                        <h3 className="text-xl font-semibold text-green-700 mb-3">
-                            🌿 Fertilizing
-                        </h3>
-                        <p className="text-gray-600">
-                            Use organic fertilizer every 4–6 weeks to keep your indoor plants
-                            healthy and vibrant.
-                        </p>
-                    </div>
-                </div>
-            </section> */}
             <CareTips/>
 
             <section className="py-16 px-8 bg-white">
                 <h2 className="text-3xl font-semibold text-center text-green-800 mb-10">
-                    🌼 Meet Our Green Experts
+                     Meet Our Green Experts
                 </h2>
 
                 <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8 max-w-6xl mx-auto text-center">
@@ -174,10 +136,9 @@ const topRated = plants
                 </div>
             </section>
 
-            {/* ================= ECO DECOR IDEAS (OPTIONAL) ================= */}
             <section className="py-16 px-8 bg-[#f8f7f3]">
                 <h2 className="text-3xl font-semibold text-center text-green-800 mb-10">
-                    🪴 Eco Decor Ideas
+                     Eco Decor Ideas
                 </h2>
 
                 <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">

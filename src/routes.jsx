@@ -5,6 +5,8 @@ import Plants from "./pages/Plants";
 import PlantsDetails from "./pages/PlantsDetails";
 import MyProfile from "./pages/MyProfile";
 import ErrorPage from "./pages/ErrorPage";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +17,9 @@ export const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "plants", element: <Plants /> },
       { path: "plants/:id", element: <PlantsDetails /> },
-      { path: "profile", element: <MyProfile /> }
+      { path: "profile", element: <MyProfile /> },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
     ]
   }
 ]);

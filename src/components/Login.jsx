@@ -1,20 +1,124 @@
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
-import React from 'react'
-import { auth } from '../firebase/firebase.init';
-const googleProvider = new GoogleAuthProvider();
+import { useState } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/firebase.init";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const Login = () => {
-    const handleGoogleBtn = ()=>{
-        signInWithPopup(auth,googleProvider)
-        .then(result=>console.log(result))
-        .catch(er=>console.log(er))
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const googleProvider = new GoogleAuthProvider();
+
+  // 🔹 Email & Password Login
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Login successful! Redirecting...");
+      setTimeout(() => navigate(from, { replace: true }), 1000);
+    } catch (error) {
+      toast.error(error.message || "Invalid email or password!");
     }
-    return (
-        <div>Login
-        <button> Sign in with google</button>
+  };
 
+  // 🔹 Google Login
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      toast.success("Signed in with Google!");
+      setTimeout(() => navigate(from, { replace: true }), 1000);
+    } catch (error) {
+      toast.error("Google sign-in failed!");
+      console.error(error);
+    }
+  };
+
+  return (
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-green-100 px-4">
+      <ToastContainer position="top-center" />
+      <div className="bg-white shadow-xl rounded-xl w-full max-w-md p-8 border border-gray-100">
+        {/* Title */}
+        <h2 className="text-3xl font-semibold text-center text-green-700 mb-8">
+          Login to <span className="italic font-serif">GreenNest</span> 
+        </h2>
+
+        {/* Form */}
+        <form onSubmit={handleLogin} className="space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              required
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-green-600 outline-none"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-2 focus:ring-green-600 outline-none"
+            />
+          </div>
+
+          <div className="text-right">
+            <Link to="/forgot-password" className="text-sm text-green-700 hover:underline">
+              Forgot Password?
+            </Link>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-green-700 to-green-500 text-white py-3 rounded-md font-medium hover:from-green-600 hover:to-green-400 transition-all duration-300"
+          >
+            Login
+          </button>
+        </form>
+
+        {/* Divider */}
+        <div className="flex items-center justify-center mt-6 mb-4">
+          <div className="w-1/5 border-t border-gray-300"></div>
+          <span className="mx-3 text-gray-500 text-sm">or</span>
+          <div className="w-1/5 border-t border-gray-300"></div>
         </div>
-    )
-}
 
-export default Login
+        {/* Google Login */}
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full flex items-center justify-center gap-3 border border-gray-300 py-3 rounded-md hover:bg-green-50 transition-all duration-300"
+        >
+          <img
+            src="https://www.svgrepo.com/show/475656/google-color.svg"
+            alt="Google"
+            className="h-5 w-5"
+          />
+          <span className="text-gray-700 font-medium">Sign in with Google</span>
+        </button>
+
+        {/* Signup link */}
+        <p className="text-center text-sm text-gray-600 mt-6">
+          Don’t have an account?{" "}
+          <Link to="/signup" className="text-green-700 font-medium hover:underline">
+            Create one
+          </Link>
+        </p>
+      </div>
+    </section>
+  );
+}

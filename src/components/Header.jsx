@@ -1,33 +1,16 @@
 import { NavLink, Link } from 'react-router-dom';
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../firebase/firebase.init';
-const googleProvider = new GoogleAuthProvider();
-import { useState,useEffect } from 'react';
+import { AppsContext } from '../AppsContext';
+import { useState, useContext } from 'react';
+import { div } from 'framer-motion/client';
 
 export default function Header() {
-    const [user, setUser] = useState(null);
+
     const [menuOpen, setMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-        return () => unsubscribe();
-    }, []);
+    const {user,logoutUser}  = useContext(AppsContext);
 
-    const handleGoogleBtn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(result => {
-                setUser(result.user);
-                console.log(result.user)
-            })
-            .catch(er => console.log(er))
-    }
-    const sign_out = () => {
-        signOut(auth)
-            .then(() => setUser(null))
-            .catch(er => console.log(er));
-    }
+    console.log(user);
+
     return (
         <div className="px-8 mx-4 py-8 flex flex-col lg:flex-row items-center justify-between">
             <div className='flex' >
@@ -49,26 +32,20 @@ export default function Header() {
                     </NavLink>
                 </nav>
             </div>
-            {/* <div>
-                {!user ?
-                    <button onClick={() => handleGoogleBtn()} className="cursor-pointer flex items-center gap-2 bg-gradient-to-r from-green-700 to-green-500 px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-400 transition-all duration-300">
-                        <span className="text-white font-medium">Register / Login</span>
-                    </button>
-                    :
-                    <button onClick={() => sign_out()} className="cursor-pointer flex items-center gap-2 bg-gradient-to-r from-green-700 to-green-500 px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-400 transition-all duration-300">
-                        <img src={user.photoURL} alt="profile" className="h-8 w-8 rounded-full object-cover border border-white"/>
-                        <span className="text-white font-medium">{user.displayName}</span>
-                    </button>
-                }
-            </div> */}
             <div className="relative">
                 {!user ? (
-                    <button
-                        onClick={handleGoogleBtn}
-                        className="cursor-pointer flex items-center gap-2 bg-gradient-to-r from-green-700 to-green-500 px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-400 transition-all duration-300"
-                    >
-                        <span className="text-white font-medium">Register / Login</span>
-                    </button>
+                    <div className=''>
+                        <Link to={'/login'}
+                            className="mr-4 cursor-pointer items-center gap-2 bg-gradient-to-r from-green-700 to-green-500 px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-400 transition-all duration-300"
+                        >
+                            <span className="text-white font-medium">Login</span>
+                        </Link>
+                        <Link to={'/signup'}
+                            className="cursor-pointer items-center gap-2 bg-gradient-to-r from-green-700 to-green-500 px-4 py-2 rounded-lg hover:from-green-600 hover:to-green-400 transition-all duration-300"
+                        >
+                            <span className="text-white font-medium">Register</span>
+                        </Link>
+                    </div>
                 ) : (
                     <div className="relative">
                         <button
@@ -86,10 +63,10 @@ export default function Header() {
                         {menuOpen && (
                             <div className="absolute z-10 right-0 mt-2 w-48 bg-white shadow-lg rounded-lg border border-gray-100">
                                 <div className="flex px-4 py-2 border-b border-gray-200 text-gray-700 font-medium">
-                                    <span><img src={user.photoURL} alt="" className='h-8 w-8 rounded-full mr-4'/></span>{user.displayName}
+                                    <span><img src={user.photoURL} alt="" className='h-8 w-8 rounded-full mr-4' /></span>{user.displayName}
                                 </div>
                                 <button
-                                    onClick={sign_out}
+                                    onClick={logoutUser}
                                     className="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-50"
                                 >
                                     Logout
